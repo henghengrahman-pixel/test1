@@ -1,0 +1,280 @@
+Build a professional full-featured e-commerce website using Node.js, Express.js, EJS, PostgreSQL, and Bootstrap-compatible frontend structure.
+
+IMPORTANT:
+
+* Keep the existing website design exactly the same as the current HTML template.
+* Do not redesign the UI.
+* Only convert the static HTML files into dynamic EJS templates.
+* The final result must look professional, clean, mobile-friendly, and production-ready.
+* The project must be ready for deployment on Railway.
+
+PROJECT GOAL:
+Convert the existing static e-commerce HTML template into a complete online store with cart, checkout, admin panel, product management, order management, Telegram order notifications, and PostgreSQL database.
+
+TECH STACK:
+
+* Node.js
+* Express.js
+* EJS
+* PostgreSQL
+* express-session
+* Bootstrap
+* Vanilla JavaScript
+* Railway deployment ready
+
+TEMPLATE CONVERSION:
+Convert these static pages into EJS:
+
+* index.html -> home page
+* store.html -> product listing page
+* product.html -> product detail page
+* checkout.html -> checkout page
+
+Use EJS structure like:
+
+* views/partials/header.ejs
+* views/partials/footer.ejs
+* views/partials/navbar.ejs
+* views/layout.ejs or layout pattern
+* views/site/home.ejs
+* views/site/store.ejs
+* views/site/product-detail.ejs
+* views/site/checkout.ejs
+* views/site/order-success.ejs
+* views/admin/login.ejs
+* views/admin/dashboard.ejs
+* views/admin/products.ejs
+* views/admin/product-form.ejs
+* views/admin/orders.ejs
+* views/admin/order-detail.ejs
+
+STATIC FILES:
+
+* Keep all CSS, JS, fonts, plugins, and images inside /public
+* Do not mix CSS into EJS files
+* Preserve original classes and frontend behavior
+
+MAIN USER FEATURES:
+
+1. Home page
+2. Product listing page
+3. Product detail page
+4. Search products
+5. Filter products by category if possible
+6. Add to cart
+7. View cart
+8. Update cart quantity
+9. Remove item from cart
+10. Checkout page
+11. Customer checkout fields:
+
+* Full name
+* Phone number
+* Full address
+* Notes
+
+12. Order success page
+13. Session-based cart
+14. Nice empty-cart state
+
+ADMIN FEATURES:
+
+1. Admin login using session authentication
+2. Admin dashboard
+3. Product management:
+
+   * Add product
+   * Edit product
+   * Delete product
+   * Product image must use image URL only, no file upload
+4. Product fields:
+
+   * Product name
+   * Slug
+   * Category
+   * Price
+   * Old price
+   * Stock
+   * Image URL
+   * Short description
+   * Full description
+   * Is featured
+   * Is new
+   * Is sale
+5. Order management:
+
+   * View all orders
+   * View order details
+   * Update order status
+   * Status options: Pending, Processed, Completed, Cancelled
+6. Dashboard statistics:
+
+   * Total products
+   * Total orders
+   * Pending orders
+   * Completed orders
+
+DATABASE:
+Use PostgreSQL with proper schema.
+
+Create tables:
+
+* admins
+* categories
+* products
+* orders
+* order_items
+
+Suggested schema behavior:
+
+* products belong to categories
+* orders store customer info
+* order_items store each purchased product
+* include created_at and updated_at fields
+* use proper foreign keys
+
+ORDER FLOW:
+
+* Customer adds product to cart
+* Customer goes to checkout
+* Customer fills form
+* Order saved into PostgreSQL
+* Order items saved into order_items
+* Cart cleared after success
+* Redirect to success page
+
+TELEGRAM BOT INTEGRATION:
+When a new order is placed, send a Telegram bot notification automatically.
+
+Telegram message should include:
+
+* Order ID
+* Customer name
+* Phone number
+* Address
+* Notes
+* Product list
+* Quantities
+* Total amount
+* Order date
+
+Use environment variables:
+
+* TELEGRAM_BOT_TOKEN
+* TELEGRAM_CHAT_ID
+
+PROJECT STRUCTURE:
+
+* server.js
+* package.json
+* routes/
+* routes/site.js
+* routes/cart.js
+* routes/checkout.js
+* routes/admin.js
+* controllers/
+* models/
+* middleware/
+* helpers/
+* config/
+* views/
+* public/
+
+ROUTES NEEDED:
+Public:
+
+* GET /
+* GET /store
+* GET /product/:slug
+* GET /cart
+* POST /cart/add
+* POST /cart/update
+* POST /cart/remove
+* GET /checkout
+* POST /checkout
+* GET /order-success
+
+Admin:
+
+* GET /admin/login
+* POST /admin/login
+* POST /admin/logout
+* GET /admin
+* GET /admin/products
+* GET /admin/products/new
+* POST /admin/products
+* GET /admin/products/edit/:id
+* POST /admin/products/update/:id
+* POST /admin/products/delete/:id
+* GET /admin/orders
+* GET /admin/orders/:id
+* POST /admin/orders/:id/status
+
+MIDDLEWARE:
+
+* admin authentication middleware
+* error handling middleware
+* optional flash message middleware
+
+ENV VARIABLES:
+Create .env.example with:
+
+* PORT
+* DATABASE_URL
+* SESSION_SECRET
+* ADMIN_USERNAME
+* ADMIN_PASSWORD
+* TELEGRAM_BOT_TOKEN
+* TELEGRAM_CHAT_ID
+* BASE_URL
+
+SEO:
+Make it SEO friendly:
+
+* dynamic meta title
+* dynamic meta description
+* canonical URL
+* Open Graph tags
+* robots.txt
+* sitemap.xml
+
+CODE QUALITY:
+
+* clean structure
+* reusable functions
+* secure session setup
+* production-ready code
+* readable code comments where needed
+* avoid inline styles
+* keep logic separated properly
+
+EXTRA:
+
+* Seed one default admin from env
+* Seed sample categories and products
+* Use professional admin pages
+* Make the whole project easy to run locally and on Railway
+
+OUTPUT:
+Generate the full project files with code, including:
+
+* package.json
+* server.js
+* PostgreSQL schema or initialization SQL
+* all routes
+* controllers
+* middleware
+* EJS views
+* sample seed logic
+* Telegram helper
+* setup instructions
+
+Also include:
+
+1. step-by-step local setup
+2. Railway deployment guide
+3. required environment variables
+4. SQL schema
+
+
+kirim fix lengkap berupah zip nya tinggal copas

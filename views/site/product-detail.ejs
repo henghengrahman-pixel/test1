@@ -1,0 +1,34 @@
+<div id="breadcrumb" class="section">
+  <div class="container"><div class="row"><div class="col-md-12"><ul class="breadcrumb-tree"><li><a href="/">Home</a></li><li><a href="/store">Store</a></li><li class="active"><%= product.name %></li></ul></div></div></div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-5">
+        <div class="product-preview-single"><img src="<%= product.image_url %>" alt="<%= product.name %>"></div>
+      </div>
+      <div class="col-md-7">
+        <div class="product-details">
+          <h2 class="product-name"><%= product.name %></h2>
+          <div><h3 class="product-price">$<%= Number(product.price).toFixed(2) %> <% if (product.old_price) { %><del class="product-old-price">$<%= Number(product.old_price).toFixed(2) %></del><% } %></h3><span class="product-available"><%= product.stock > 0 ? 'In Stock' : 'Out of Stock' %></span></div>
+          <p><%= product.full_description || product.short_description %></p>
+          <div class="add-to-cart">
+            <form action="/cart/add" method="post" class="detail-cart-form">
+              <input type="hidden" name="productId" value="<%= product.id %>">
+              <div class="qty-label">Qty <div class="input-number"><input type="number" name="quantity" min="1" value="1"></div></div>
+              <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-12 related-section">
+        <div class="section-title"><h3 class="title">Related Products</h3></div>
+        <div class="products-grid">
+          <% relatedProducts.forEach(function(product) { %>
+            <%- include('../partials/product-card', { product: product }) %>
+          <% }) %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

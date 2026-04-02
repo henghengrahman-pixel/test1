@@ -1,0 +1,11 @@
+<div class="section">
+  <div class="container">
+    <div class="empty-state success-state">
+      <i class="fa fa-check-circle"></i>
+      <h3>Order berhasil dibuat</h3>
+      <p>Terima kasih. Pesanan kamu sudah masuk ke sistem admin dan siap dikirim ke Telegram.</p>
+      <% if (orderId) { %><p><strong>Order ID:</strong> #<%= orderId %></p><% } %>
+      <a href="/store" class="primary-btn">Kembali ke toko</a>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+<header>
+  <div id="top-header">
+    <div class="container">
+      <ul class="header-links pull-left">
+        <li><a href="#"><i class="fa fa-phone"></i> <%= process.env.STORE_PHONE || '+855 00 000 000' %></a></li>
+        <li><a href="#"><i class="fa fa-envelope-o"></i> <%= process.env.STORE_EMAIL || 'hello@mawarparfume.com' %></a></li>
+        <li><a href="#"><i class="fa fa-map-marker"></i> <%= process.env.STORE_ADDRESS || 'Poipet, Cambodia' %></a></li>
+      </ul>
+      <ul class="header-links pull-right">
+        <li><a href="#"><i class="fa fa-dollar"></i> USD</a></li>
+        <li><a href="/admin/login"><i class="fa fa-user-o"></i> Admin</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="header-logo">
+            <a href="/" class="logo"><span class="logo-text"><%= storeName %></span></a>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="header-search">
+            <form action="/store" method="get">
+              <select class="input-select" name="category">
+                <option value="">All Categories</option>
+              </select>
+              <input class="input" name="search" placeholder="Search here">
+              <button class="search-btn">Search</button>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-3 clearfix">
+          <div class="header-ctn">
+            <div class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="true">
+                <i class="fa fa-shopping-cart"></i>
+                <span>Your Cart</span>
+                <div class="qty"><%= cartSummary.count %></div>
+              </a>
+              <div class="cart-dropdown">
+                <div class="cart-list">
+                  <% if (cart.length) { %>
+                    <% cart.slice(0, 3).forEach(function(item) { %>
+                      <div class="product-widget">
+                        <div class="product-img"><img src="<%= item.image_url %>" alt="<%= item.name %>"></div>
+                        <div class="product-body">
+                          <h3 class="product-name"><a href="/product/<%= item.slug %>"><%= item.name %></a></h3>
+                          <h4 class="product-price"><span class="qty"><%= item.quantity %>x</span>$<%= Number(item.price).toFixed(2) %></h4>
+                        </div>
+                      </div>
+                    <% }) %>
+                  <% } else { %>
+                    <p class="empty-mini-cart">Cart masih kosong.</p>
+                  <% } %>
+                </div>
+                <div class="cart-summary">
+                  <small><%= cartSummary.count %> Item(s) selected</small>
+                  <h5>SUBTOTAL: $<%= Number(cartSummary.subtotal).toFixed(2) %></h5>
+                </div>
+                <div class="cart-btns">
+                  <a href="/cart">View Cart</a>
+                  <a href="/checkout">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                </div>
+              </div>
+            </div>
+            <div class="menu-toggle">
+              <a href="/store"><i class="fa fa-bars"></i><span>Store</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav id="navigation">
+  <div class="container">
+    <div id="responsive-nav">
+      <ul class="main-nav nav navbar-nav">
+        <li class="<%= currentPath === '/' ? 'active' : '' %>"><a href="/">Home</a></li>
+        <li class="<%= currentPath === '/store' ? 'active' : '' %>"><a href="/store">Store</a></li>
+        <li class="<%= currentPath === '/cart' ? 'active' : '' %>"><a href="/cart">Cart</a></li>
+        <li class="<%= currentPath === '/checkout' ? 'active' : '' %>"><a href="/checkout">Checkout</a></li>
+        <li><a href="/admin">Admin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

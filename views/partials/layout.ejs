@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title><%= meta?.title || storeName %></title>
+  <meta name="description" content="<%= meta?.description || '' %>">
+  <link rel="canonical" href="<%= meta?.canonical || baseUrl + currentPath %>">
+  <meta property="og:title" content="<%= meta?.title || storeName %>">
+  <meta property="og:description" content="<%= meta?.description || '' %>">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="<%= meta?.canonical || baseUrl + currentPath %>">
+  <meta property="og:image" content="<%= meta?.image || (baseUrl + '/public/img/og-default.jpg') %>">
+  <meta name="twitter:card" content="summary_large_image">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Store",
+      "name": "<%= storeName %>",
+      "url": "<%= baseUrl %>",
+      "telephone": "<%= process.env?.STORE_PHONE || '+855 00 000 000' %>",
+      "address": "<%= process.env?.STORE_ADDRESS || 'Poipet, Cambodia' %>"
+    }
+  </script>
+</head>
+<body>
+  <%- include('header') %>
+  <%- body %>
+  <%- include('footer') %>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.4.1/dist/js/bootstrap.min.js"></script>
+  <script src="/public/js/main.js"></script>
+</body>
+</html>

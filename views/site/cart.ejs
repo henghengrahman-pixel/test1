@@ -1,0 +1,38 @@
+<div id="breadcrumb" class="section">
+  <div class="container"><div class="row"><div class="col-md-12"><h3 class="breadcrumb-header">Cart</h3></div></div></div>
+</div>
+<div class="section">
+  <div class="container">
+    <% if (cart.length) { %>
+      <div class="cart-table">
+        <table class="table table-bordered">
+          <thead><tr><th>Product</th><th>Price</th><th>Qty</th><th>Total</th><th>Action</th></tr></thead>
+          <tbody>
+            <% cart.forEach(function(item) { %>
+              <tr>
+                <td><div class="cart-product"><img src="<%= item.image_url %>" alt=""><span><%= item.name %></span></div></td>
+                <td>$<%= Number(item.price).toFixed(2) %></td>
+                <td>
+                  <form action="/cart/update" method="post" class="form-inline">
+                    <input type="number" class="form-control" name="quantity[<%= item.product_id %>]" min="1" value="<%= item.quantity %>">
+                    <button class="btn btn-default btn-sm">Update</button>
+                  </form>
+                </td>
+                <td>$<%= (Number(item.price) * item.quantity).toFixed(2) %></td>
+                <td>
+                  <form action="/cart/remove" method="post">
+                    <input type="hidden" name="productId" value="<%= item.product_id %>">
+                    <button class="btn btn-danger btn-sm">Remove</button>
+                  </form>
+                </td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+      </div>
+      <div class="cart-actions"><a class="primary-btn" href="/checkout">Proceed to Checkout</a></div>
+    <% } else { %>
+      <div class="empty-state"><i class="fa fa-shopping-cart"></i><h3>Cart kosong</h3><p>Tambahkan produk terlebih dahulu.</p><a class="primary-btn" href="/store">Belanja sekarang</a></div>
+    <% } %>
+  </div>
+</div>

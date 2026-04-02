@@ -1,0 +1,30 @@
+<div id="breadcrumb" class="section">
+  <div class="container"><div class="row"><div class="col-md-12"><h3 class="breadcrumb-header">Checkout</h3></div></div></div>
+</div>
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <div class="billing-details">
+          <div class="section-title"><h3 class="title">Billing address</h3></div>
+          <form method="post" action="/checkout">
+            <div class="form-group"><input class="input" type="text" name="fullname" placeholder="Full name" required></div>
+            <div class="form-group"><input class="input" type="text" name="phone" placeholder="Phone number" required></div>
+            <div class="form-group"><textarea class="input" name="address" placeholder="Full address" required></textarea></div>
+            <div class="form-group"><textarea class="input" name="notes" placeholder="Notes"></textarea></div>
+            <button class="primary-btn order-submit">Place order</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-md-5 order-details">
+        <div class="section-title text-center"><h3 class="title">Your Order</h3></div>
+        <div class="order-summary">
+          <% cart.forEach(function(item) { %>
+            <div class="order-col"><div><%= item.quantity %>x <%= item.name %></div><div>$<%= (item.quantity * Number(item.price)).toFixed(2) %></div></div>
+          <% }) %>
+          <div class="order-col"><div><strong>Total</strong></div><div><strong class="order-total">$<%= Number(cartSummary.subtotal).toFixed(2) %></strong></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

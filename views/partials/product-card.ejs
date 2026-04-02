@@ -1,0 +1,21 @@
+<div class="product">
+  <div class="product-img">
+    <img src="<%= product.image_url %>" alt="<%= product.name %>">
+    <div class="product-label">
+      <% if (product.is_sale) { %><span class="sale">SALE</span><% } %>
+      <% if (product.is_new) { %><span class="new">NEW</span><% } %>
+    </div>
+  </div>
+  <div class="product-body">
+    <p class="product-category"><%= product.category_name || 'Category' %></p>
+    <h3 class="product-name"><a href="/product/<%= product.slug %>"><%= product.name %></a></h3>
+    <h4 class="product-price">$<%= Number(product.price).toFixed(2) %> <% if (product.old_price) { %><del class="product-old-price">$<%= Number(product.old_price).toFixed(2) %></del><% } %></h4>
+    <p class="product-short"><%= product.short_description || '' %></p>
+  </div>
+  <div class="add-to-cart">
+    <form action="/cart/add" method="post">
+      <input type="hidden" name="productId" value="<%= product.id %>">
+      <button class="add-to-cart-btn"><i class="fa fa-shopping-cart"></i> add to cart</button>
+    </form>
+  </div>
+</div>
